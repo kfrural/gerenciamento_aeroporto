@@ -2,12 +2,12 @@ package com.mycompany.mavenproject3.classes;
 
 import java.util.Objects;
 
-
 /**
  *
  * @author kfrural
  */
 public class Passageiro {
+
     private String nome;
     private String cpf;
     private SistemaFidelidade sistemaFidelidade;
@@ -15,6 +15,7 @@ public class Passageiro {
     public Passageiro(String nome, String cpf) {
         this.nome = nome;
         this.cpf = cpf;
+        this.sistemaFidelidade = new SistemaFidelidade();
     }
 
     public Passageiro() {
@@ -22,7 +23,6 @@ public class Passageiro {
         this.cpf = "";
         this.sistemaFidelidade = new SistemaFidelidade();
     }
-    
 
     public String getNome() {
         return nome;
@@ -47,5 +47,5 @@ public class Passageiro {
     public void setSistemaFidelidade(SistemaFidelidade sistemaFidelidade) {
         this.sistemaFidelidade = sistemaFidelidade;
     }
-    
+
 }

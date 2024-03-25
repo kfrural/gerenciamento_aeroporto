@@ -7,6 +7,7 @@ package com.mycompany.main;
 import com.mycompany.mavenproject3.classes.Aeroporto;
 import com.mycompany.mavenproject3.classes.Passageiro;
 import com.mycompany.mavenproject3.classes.Voo;
+import java.util.List;
 
 /**
  *
@@ -30,13 +31,13 @@ public class Main {
     passageiro1.getSistemaFidelidade().adicionarPontos(500);
 
     // Iniciar voo
-    //aeroporto.iniciarVoo("BR123");
+    aeroporto.iniciarVoo("BR123");
 
     // Verificar voos com prejuízo
-//    System.out.println("Voos com prejuízo:");
-//    List<Voo> voosPrejuizo = aeroporto.calcularVoosComPrejuizo();
-//    for (int i = 0; i < voosPrejuizo.size(); i++) {
-//        System.out.println(voosPrejuizo.get(i).getNumeroDoVoo());
-//    }
+    System.out.println("Voos com prejuízo:");
+    List<Voo> voosPrejuizo = aeroporto.prejuizo();
+    for (int i = 0; i < voosPrejuizo.size(); i++) {
+        System.out.println(voosPrejuizo.get(i).getNumVoo());
+    }
 }
 }

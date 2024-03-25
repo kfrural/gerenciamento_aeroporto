@@ -10,16 +10,18 @@ import java.util.List;
 public class Aeroporto {
     private String nome;
     private String localizacao;
-    private List<Voo> voo = new ArrayList<>();
+    private List<Voo> voo;
 
     public Aeroporto(String nome, String localizacao) {
         this.nome = nome;
         this.localizacao = localizacao;
+        this.voo =  new ArrayList<>();
     }
 
     public Aeroporto() {
         this.nome = "";
         this.localizacao = "";
+        this.voo =  new ArrayList<>();
     }
     
     public void adicionarVoo(Voo voo){
@@ -35,14 +37,26 @@ public class Aeroporto {
             System.out.println(v);
     }
     
-    public void prejuizo(){
-        System.out.println("VOO COM PREJUIZO");
-        //TEM Q FAZER
+    public List<Voo> prejuizo(){
+        //System.out.println("VOO COM PREJUIZO");
+        List<Voo> voosPrejuizo = new ArrayList<>();
+        for(Voo v : this.voo){
+            if(v.capMinima())
+                voosPrejuizo.add(v);
+        }
+        return voosPrejuizo;
     }
     
-    public void iniciarVoo(){
-        System.out.println("VOO INICIADO");
-        //TEM Q FAZER
+    public void iniciarVoo(String numVoo){
+        //System.out.println("VOO INICIADO");
+        for(Voo v: this.voo){
+            if(v.getNumVoo().equals(numVoo) && v.getEstadoVoo() == Voo.EstadoVoo.QUASE_VOANDO){
+                v.setEstadoVoo(Voo.EstadoVoo.VOANDO);
+                System.out.println("O voo a frente foi iniciado: " + numVoo);
+                return;
+            }
+        }
+        System.out.println("nao achei o voo ou ele nao pode ser feito");
     }
     
     public String getNome() {

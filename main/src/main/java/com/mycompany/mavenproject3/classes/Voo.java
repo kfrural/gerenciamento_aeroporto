@@ -14,11 +14,17 @@ public class Voo {
     private int capacidade;
     private List<Passageiro> passageiros = new ArrayList<>();
     private List<String> escala = new ArrayList<>();
+    private EstadoVoo estadoVoo;
+    
+    public enum EstadoVoo{
+        QUASE_VOANDO, VOANDO, CHEGOU
+    }
 
     public Voo(String numVoo, String destino, int capacidade) {
         this.numVoo = numVoo;
         this.destino = destino;
         this.capacidade = capacidade;
+        this.estadoVoo = EstadoVoo.QUASE_VOANDO;
     }
     
     public void addPassageiro(Passageiro passageiro){
@@ -41,12 +47,12 @@ public class Voo {
     }
 
     public void estadoVoo(){
-        System.out.println("TEM Q FAZER");
+        System.out.println(estadoVoo);
     }
     
-    public boolean capMinima(int capMinima){
+    public boolean capMinima(){
+        int capMinima = (int) (0.5 * this.capacidade);
         return passageiros.size() < capMinima;
-        //O USUARIO TEM Q FALAR A CPACIDADE MINIMA, NAO ACHO Q SEJA ISSO
     }
     
     public String getNumVoo() {
@@ -74,11 +80,11 @@ public class Voo {
     }
 
     public List<Passageiro> getPassageiro() {
-        return passageiro;
+        return passageiros;
     }
 
     public void setPassageiro(List<Passageiro> passageiro) {
-        this.passageiro = passageiro;
+        this.passageiros = passageiro;
     }
 
     public List<String> getEscala() {
@@ -87,6 +93,22 @@ public class Voo {
 
     public void setEscala(List<String> escala) {
         this.escala = escala;
+    }
+
+    public List<Passageiro> getPassageiros() {
+        return passageiros;
+    }
+
+    public void setPassageiros(List<Passageiro> passageiros) {
+        this.passageiros = passageiros;
+    }
+
+    public EstadoVoo getEstadoVoo() {
+        return estadoVoo;
+    }
+
+    public void setEstadoVoo(EstadoVoo estadoVoo) {
+        this.estadoVoo = estadoVoo;
     }
     
 }
